@@ -1,142 +1,141 @@
 # Tone Generator Pro
 
-Многофункциональный генератор тона с Web Audio API и React/TypeScript.
+Multi-channel tone generator built with Web Audio API and React/TypeScript.
 
-## Функционал
+## Features
 
-### Каналы
-- **4 обычных канала** + **1 Smart Module (5-й канал)**
-- Независимые настройки громкости, частоты и типа волны для каждого канала
+### Channels
+- **4 regular channels** + **1 Smart Module (5th channel)**
+- Independent volume, frequency, and waveform settings per channel
 
-### Типы волн
-- Sine (синусоида)
-- Square (меандр)
-- Triangle (треугольная)
-- Sawtooth (пилообразная)
-- White Noise (белый шум)
-- Pink Noise (розовый шум)
+### Waveforms
+- Sine
+- Square
+- Triangle
+- Sawtooth
+- White Noise
+- Pink Noise
 
-### Режимы
+### Modes
 
-#### PULSE (импульсный)
-- Длительность тона и паузы
-- Затухание
-- Рандомизация ±50%
-- **Хаос (50-200%)** - случайный gap после каждого цикла
-- **Triple-Tap Burst** - 10% шанс серии из 3 быстрых импульсов
+#### PULSE
+- Tone duration and pause
+- Fade in/out
+- Randomization ±50%
+- **Chaos (50-200%)** — random gap after each cycle
+- **Triple-Tap Burst** — 10% chance of 3 fast pulses
 
-#### SWEEP (частота)
-- Стартовая и конечная частота
-- Длительность свипа
-- Тип: линейный/логарифмический
-- Loop/Ping-Pong режимы
+#### SWEEP
+- Start and end frequency
+- Sweep duration
+- Linear/logarithmic type
+- Loop/Ping-Pong modes
 
-#### Smart Module (5-й канал)
-- **Beats (интерференция)** - два осциллятора с частотой ± offset для создания биений
+#### Smart Module (5th channel)
+- **Beats (interference)** — two oscillators at ± offset frequency
 
-### Дополнительно
-- Выбор устройства вывода звука
-- Экспорт в WAV
-- Автостоп таймер
-- Синхронизация параметров на лету
+### Extras
+- Output device selection
+- WAV export
+- Auto-stop timer
+- Live parameter sync
 
-## Команды
+## Commands
 
 ```bash
-# Установка зависимостей
+# Install dependencies
 npm install
 
-# Запуск dev сервера
+# Start dev server
 npm run dev
 
-# Сборка production версии
+# Build production bundle
 npm run build
 
-# Запуск production preview
+# Run production preview
 npm run preview
 
-# Запуск тестов
+# Run tests
 npm test
+```
 
-
-## Технологии
+## Tech Stack
 
 - React 19
 - TypeScript
 - Web Audio API
 - Vite
-- Vitest (тестирование)
+- Vitest
 - CSS Modules
 
-## Файловая структура
+## File Structure
 
 ```
 src/
 ├── audio/
-│   ├── AudioEngine.ts    # Основной движок
-│   ├── Voice.ts          # Отдельный канал
-│   ├── NoiseGenerator.ts # Генератор шума
-│   └── WavExporter.ts    # Экспорт в WAV
+│   ├── AudioEngine.ts    # Core engine
+│   ├── Voice.ts          # Single channel
+│   ├── NoiseGenerator.ts # Noise generator
+│   └── WavExporter.ts    # WAV export
 ├── components/
-│   └── Channel.tsx      # UI канала
+│   └── Channel.tsx      # Channel UI
 ├── types/
-│   └── index.ts        # TypeScript типы
-├── App.tsx              # Главный компонент
-├── App.css              # Стили
+│   └── index.ts        # TypeScript types
+├── App.tsx              # Main component
+├── App.css              # Styles
 └── test/
-    ├── Voice.test.ts    # Тесты Voice
-    ├── Channel.test.tsx  # Тесты UI
+    ├── Voice.test.ts    # Voice tests
+    ├── Channel.test.tsx  # UI tests
     └── ...
 ```
 
-## История изменений
+## Changelog
 
-### v1.4 (последняя)
-- Исправлен показ устройств вывода
-- Улучшен fallback для getOutputDevices
+### v1.4 (latest)
+- Fixed output device listing
+- Improved getOutputDevices fallback
 
-### v1.3 - Исправления и оптимизация
-- Исправлены баги с переключением волн
-- Синхронизация параметров на лету
-- Добавлены комплексные тесты (123 теста)
-- Улучшен UI
+### v1.3 — Fixes and optimization
+- Fixed waveform switching bugs
+- Live parameter sync
+- Comprehensive tests (123 tests)
+- Improved UI
 
-### v1.2 - Chaos Mode
-- Режим "Безумный ремонт"
-- Случайный gap (50-200%)
-- Triple-Tap Burst (10% шанс)
+### v1.2 — Chaos Mode
+- Random gap (50-200%)
+- Triple-Tap Burst (10% chance)
 
-### v1.1 - Smart Module и Beats
-- 5-й канал с Beats (интерференция)
-- Два осциллятора для создания биений
+### v1.1 — Smart Module and Beats
+- 5th channel with Beats (interference)
+- Dual oscillators for beat frequencies
 
-### v1.0 - Основные функции
-- 4 канала + Smart Module
-- PULSE с настройками
-- SWEEP с Loop/Ping-Pong
-- Белый и розовый шум
-- Выбор устройства вывода
-- Экспорт в WAV
-- Автостоп
+### v1.0 — Core features
+- 4 channels + Smart Module
+- PULSE with settings
+- SWEEP with Loop/Ping-Pong
+- White and pink noise
+- Output device selection
+- WAV export
+- Auto-stop
 
-## Тесты
+## Tests
 
-123 теста проходят, покрывающие:
-- Базовые операции Voice
-- PULSE/SWEEP взаимоисключение
-- Loop/Ping-Pong взаимоисключение
+181 tests passing, covering:
+- Basic Voice operations
+- PULSE/SWEEP mutual exclusion
+- Loop/Ping-Pong mutual exclusion
 - Smart Module + Beats
 - Chaos Mode
-- Комплексные сценарии
+- Complex scenarios
 - Edge cases
 
-## Запуск
+## Run
 
 1. `npm install`
-2. `npm run preview` (после `npm run build`) или `npm run dev`
-3. Открыть http://localhost:5173 (dev) или http://localhost:4173 (preview)
+2. `npm run preview` (after `npm run build`) or `npm run dev`
+3. Open http://localhost:5173 (dev) or http://localhost:4173 (preview)
 
-## Известные особенности
+## Known quirks
 
-- `setSinkId` на Windows может работать ненадёжно - при смене устройства рекомендуется перезапустить воспроизведение
-- Web Audio API требует взаимодействия пользователя для старта (нажатие кнопки "НАЧАТЬ")
+- `setSinkId` on Windows can be unreliable — restart playback after switching devices
+- Web Audio API requires a user gesture to start (the START button)
