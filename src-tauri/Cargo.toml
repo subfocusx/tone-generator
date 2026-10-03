@@ -1,0 +1,29 @@
+[package]
+name = "tone_generator"
+version = "1.0.0"
+description = "Tone Generator for transducers"
+authors = ["User"]
+edition = "2021"
+
+[lib]
+name = "tone_generator_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[target.'cfg(windows)'.dependencies]
+winres = "0.1"
+
+[profile.release]
+panic = "abort"
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
